@@ -1,0 +1,108 @@
+/* ===== Experiência ===== */
+.experiencia {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--bg-color);
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: var(--spacing-md) 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--shadow-dark);
+    top: 0;
+    bottom: 0;
+    left: 50px;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 0 0 var(--spacing-xl) 80px;
+    position: relative;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 35px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--element-color);
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.timeline-content {
+    position: relative;
+}
+
+.timeline-card {
+    background-color: var(--element-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    padding: var(--spacing-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.timeline-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-large);
+}
+
+.timeline-card h3 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--accent-color);
+}
+
+.timeline-card h4 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+}
+
+.timeline-date {
+    display: inline-block;
+    padding: 4px 10px;
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    box-shadow: var(--shadow-small);
+}
+
+.timeline-description {
+    margin-top: var(--spacing-sm);
+}
+
+.timeline-description p {
+    margin-bottom: var(--spacing-sm);
+}
+
+.tech-used {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: var(--spacing-sm);
+}
+
+.tech-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    box-shadow: var(--shadow-small);
+}
