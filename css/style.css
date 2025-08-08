@@ -979,6 +979,11 @@ textarea {
 }
 
 /* ===== Projetos ===== */
+.icone-aba{
+    height: 30px;
+    margin: 0;
+}
+
 .projects-filter {
     display: flex;
     justify-content: center;
