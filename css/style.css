@@ -10,10 +10,10 @@
     --element-color: #edf0f7;
     --shadow-light: #ffffff;
     --shadow-dark: #d1d9e6;
-    --accent-color: #707070; /* --accent-color: #ff6b2b; #4dc0b5 */
-    --accent-hover: #5a5a5a; /* --accent-hover: #e85a1a; #3aaea2*/
-    --text-primary: #2d3748;
-    --text-secondary: #718096;
+    --accent-color: #707070; /* --accent-color: #ff6b2b; #4dc0b5 #707070 #2d3748 #5d3c22*/
+    --accent-hover: #5a5a5a; /* --accent-hover: #e85a1a; #3aaea2 #5a5a5a #718096 #a37b5e*/
+    --text-primary: #5c5c5c;
+    --text-secondary:#9a9a9a;
     --text-light: #a0aec0;
     
     /* Sombras neumórficas */
@@ -127,6 +127,7 @@ img {
 section {
     padding: var(--spacing-xl) 0;
 }
+
 
 .section-header {
     text-align: center;
@@ -522,35 +523,68 @@ textarea {
     animation: float 3s ease-in-out infinite;
 }
 
-.tech-icon.html {
+.tech-icon img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+/* Ajustes individuais */
+.tech-icon.powerapps img {
+    width: 100%;
+    height: 100%;
+}
+
+.tech-icon.automate img {
+    width: 60%;
+    height: 60%;
+}
+
+.tech-icon.copilot_studio img {
+    width: 50%;
+    height: 50%;
+}
+
+.tech-icon.bi img {
+    width: 60%;
+    height: 60%;
+}
+
+.tech-icon.csharp img {
+    width: 75%;
+    height: 75%;
+}
+
+
+.tech-icon.powerapps {
     top: 10%;
     left: 8%;
     color: #e34c26;
     animation-delay: 0s;
 }
 
-.tech-icon.css {
+.tech-icon.automate {
     top: 15%;
     right: 5%;
     color: #264de4;
     animation-delay: 0.5s;
 }
 
-.tech-icon.js {
+.tech-icon.copilot_studio {
     bottom: 20%;
     left: 10%;
     color: #f7df1e;
     animation-delay: 1s;
 }
 
-.tech-icon.react {
+.tech-icon.bi {
     bottom: 10%;
     right: 15%;
     color: #61dafb;
     animation-delay: 1.5s;
 }
 
-.tech-icon.python {
+.tech-icon.csharp {
     top: 50%;
     right: 5%;
     color: #306998;
@@ -732,8 +766,21 @@ textarea {
     font-size: 0.9rem;
     color: var(--text-secondary);
 }
+.container-cv-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-sm);
+    
+}
 
 .cv-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.cv-button-english {
         display: flex;
         justify-content: center;
         align-items: center;

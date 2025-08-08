@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio Pessoal | Design Neumórfico</title>
-    <link rel="icon" href="images/icone.png" type="image/png">
+    <link rel="icon" href="images/icone_cinza.png" type="image/png">
     <meta name="description" content="Portfólio pessoal com design neumórfico, apresentando projetos e habilidades profissionais">
     
     <!-- Fontes -->
@@ -62,7 +62,7 @@
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <div class="profile-placeholder">
-                                    <img src="./images/perfil.png" alt="Imagem de perfil" class="perfil-image">
+                                    <img src="./images/perfil_cinza.png" alt="Imagem de perfil" class="perfil-image">
                                     <!-- <i class="fas fa-user"></i> -->
                                 </div>
                             </div>
@@ -73,20 +73,20 @@
                         </div>
                     </div>
                     <div class="tech-icons">
-                        <div class="tech-icon html">
-                            <i class="fab fa-html5"></i>
+                        <div class="tech-icon powerapps">
+                            <img src="images/tecnologias/powerapps.png" alt="">
                         </div>
-                        <div class="tech-icon css">
-                            <i class="fab fa-css3-alt"></i>
+                        <div class="tech-icon automate">
+                            <img src="images/tecnologias/automate.png" alt="">
                         </div>
-                        <div class="tech-icon js">
-                            <i class="fab fa-js"></i>
+                        <div class="tech-icon copilot_studio">
+                            <img src="images/tecnologias/copilot_studio.png" alt="">
                         </div>
-                        <div class="tech-icon react">
-                            <i class="fab fa-react"></i>
+                        <div class="tech-icon bi">
+                            <img src="images/tecnologias/bi.png" alt="">
                         </div>
-                        <div class="tech-icon python">
-                            <i class="fab fa-python"></i>
+                        <div class="tech-icon csharp">
+                            <img src="images/tecnologias/csharp.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                 </div>
                 <div class="sobre-text">
                     <div class="scroll-card">
-                        <h3>Quem sou eu</h3>
+                        <h3>Quem sou eu?</h3>
                         <p>
                             Sou Software Developer & Functional Consultant na Best.Projects, atuando no ecossistema Microsoft com Power Apps, Power Automate, Dynamics 365, Azure Functions, APIs REST, plugins em C#, JavaScript e CanvasApp, além de documentações técnicas e funcionais. Utilizo Copilot e modelos GPT para acelerar análises e desenvolvimento, explorando o potencial da IA em soluções corporativas com foco em integração ao Dataverse, escalabilidade, inovação e impacto real.
                         </p>
@@ -135,7 +135,7 @@
                     <div class="stats-container">
                         <div class="stat-card">
                             <span class="stat-number">1+</span>
-                            <span class="stat-label">Anos de Experiência</span>
+                            <span class="stat-label">Ano de Experiência</span>
                         </div>
                         <div class="stat-card">
                             <span class="stat-number">20+</span>
@@ -148,8 +148,13 @@
                     </div>
                     
                     <div class="scroll-card">
-                        <div class="cv-button">
-                            <a href="https://drive.google.com/uc?export=download&id=1KZWEKoAZ_kYnZuBO-fR5Ug-2e_vM3Os1" class="btn btn-primary">Download CV</a>
+                        <div class="container-cv-buttons">
+                            <div class="cv-button">
+                            <a href="https://drive.google.com/uc?export=download&id=1KZWEKoAZ_kYnZuBO-fR5Ug-2e_vM3Os1" class="btn btn-primary">Download CV Português</a>
+                            </div>
+                            <div class="cv-button-english">
+                                <a href="https://drive.google.com/uc?export=download&id=1wUZAb34SMiDb7CENz948KJoQjv4ujHpB" class="btn btn-primary">Download CV English</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -431,7 +436,7 @@
     </section>
 
     <!-- Educação -->
-    <section id="educacao" class="experiencia">
+    <section id="educacao" class="educacao">
         <div class="container">
             <div class="section-header">
                 <h2>Educação</h2>
@@ -442,13 +447,15 @@
                     <div class="timeline-dot">
                         <img src="images/educacao/fiap.png" alt="FIAP Logo">
                     </div>
-                    <div class="timeline-date">2025 - Presente</div>
-                    <div class="timeline-content">
-                        <h3>Inteligência Artificial</h3>
-                        <h4>FIAP</h4>
-                        <p>
-                            Curso superior de Tecnologia em Inteligência Artificial, Machine Learning, IA Generativa e Natural Language Processing.
-                        </p>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2025 - Presente</div>
+                        <div class="timeline-content">
+                            <h3>Inteligência Artificial</h3>
+                            <h4>FIAP</h4>
+                            <p>
+                                Curso superior de Tecnologia em Inteligência Artificial, Machine Learning, IA Generativa e Natural Language Processing.
+                            </p>
+                        </div>
                     </div>
                 </div>
                 
@@ -456,13 +463,15 @@
                     <div class="timeline-dot">
                         <img src="images/educacao/uam.png" alt="Universidade Anhembi Morumbi Logo">
                     </div>
-                    <div class="timeline-date">2024 - Presente</div>
-                    <div class="timeline-content">
-                        <h3>Análise e Desenvolvimento de Sistemas</h3>
-                        <h4>Universidade Anhembi Morumbi</h4>
-                        <p>
-                            Curso superior de Análise e Desenvolvimento de Sistemas, com foco em programação, banco de dados e desenvolvimento web.
-                        </p>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2024 - Presente</div>
+                        <div class="timeline-content">
+                            <h3>Análise e Desenvolvimento de Sistemas</h3>
+                            <h4>Universidade Anhembi Morumbi</h4>
+                            <p>
+                                Curso superior de Análise e Desenvolvimento de Sistemas, com foco em programação, banco de dados e desenvolvimento web.
+                            </p>
+                        </div>
                     </div>
                 </div>
                 
@@ -470,13 +479,15 @@
                     <div class="timeline-dot">
                         <img src="images/educacao/ebac.png" alt="EBAC Logo">
                     </div>
-                    <div class="timeline-date">2023 - 2025</div>
-                    <div class="timeline-content">
-                        <h3>Full Stack Python</h3>
-                        <h4>EBAC </h4>
-                        <p>
-                            Curso profissionalizante em desenvolvimento Full Stack com Python, incluindo Django, Flask e desenvolvimento de APIs, além de desenvolvimento de aplicações web e integração com bancos de dados, front-end development e deploy de aplicações.
-                        </p>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2023 - 2025</div>
+                        <div class="timeline-content">
+                            <h3>Full Stack Python</h3>
+                            <h4>EBAC </h4>
+                            <p>
+                                Curso profissionalizante em desenvolvimento Full Stack com Python, incluindo Django, Flask e desenvolvimento de APIs, além de desenvolvimento de aplicações web e integração com bancos de dados, front-end development e deploy de aplicações.
+                            </p>
+                        </div>
                     </div>
                 </div>
                 
@@ -484,13 +495,15 @@
                     <div class="timeline-dot">
                         <img src="images/educacao/fatec.png" alt="FATEC Logo">
                     </div>
-                    <div class="timeline-date">2019 - 2022</div>
-                    <div class="timeline-content">
-                        <h3>Produção Fonográfica</h3>
-                        <h4>FATEC Tatuí</h4>
-                        <p>
-                            Curso superior de Tecnologia em Produção Fonográfica, com foco em áudio, música e produção musical.
-                        </p>
+                    <div class="timeline-card">
+                        <div class="timeline-date">2019 - 2022</div>
+                        <div class="timeline-content">
+                            <h3>Produção Fonográfica</h3>
+                            <h4>FATEC Tatuí</h4>
+                            <p>
+                                Curso superior de Tecnologia em Produção Fonográfica, com foco em áudio, música e produção musical.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
