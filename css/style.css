@@ -1489,6 +1489,24 @@ textarea {
   box-shadow: var(--shadow-medium);
 }
 
+/* torna o anchor um "card" visual, herdando cores */
+.contato .info-card-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease; /* suavidade igual ao de projetos */
+  }
+  
+.contato .info-card-link:hover {
+box-shadow: var(--shadow-large);
+}
+
+.contato .info-card-link:active {
+box-shadow: var(--shadow-small);
+}
+  
+  
+
 .contato .info-icon{
   width: 56px;
   height: 56px;

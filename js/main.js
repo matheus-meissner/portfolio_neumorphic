@@ -347,48 +347,69 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===== Formulário de Contato =====
+    // ===== Formulário de Contato =====
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simular envio de formulário com feedback visual
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
-            
-            // Simular delay de envio
+        contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+    
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+    
+        const name = this.querySelector('#name')?.value?.trim() || '';
+        const email = this.querySelector('#email')?.value?.trim() || '';
+        const subject = this.querySelector('#subject')?.value?.trim() || '';
+        const message = this.querySelector('#message')?.value?.trim() || '';
+    
+        // validação simples
+        if (!email || !subject || !message) {
+            // feedback rápido (sem depender de alert)
+            const formGroups = this.querySelectorAll('.form-group');
+            const lastFormGroup = formGroups[formGroups.length - 1];
+            const warn = document.createElement('div');
+            warn.textContent = 'Preencha Email, Assunto e Mensagem.';
+            warn.style.color = '#c53030';
+            warn.style.fontWeight = '500';
+            warn.style.marginTop = 'var(--spacing-sm)';
+            lastFormGroup.insertAdjacentElement('afterend', warn);
+            setTimeout(() => { warn.style.opacity = '0'; setTimeout(() => warn.remove(), 300); }, 2500);
+            return;
+        }
+    
+        // desabilita botão enquanto preparamos o mailto
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Abrindo seu e-mail...';
+    
+        // monta o link mailto (remetente vai no corpo; não dá pra setar "From" via mailto)
+        const body = `De: ${email}\n\n${message}${name ? `\n\n— ${name}` : ''}`;
+        const mailtoLink = `mailto:matheus.iembo@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+        // abre o cliente de e-mail do usuário
+        window.location.href = mailtoLink;
+    
+        // restaura UI e limpa o formulário (mantém sua experiência visual)
+        setTimeout(() => {
+            const formGroups = this.querySelectorAll('.form-group');
+            const lastFormGroup = formGroups[formGroups.length - 1];
+    
+            const info = document.createElement('div');
+            info.className = 'success-message';
+            info.textContent = 'Cliente de e-mail aberto. Finalize o envio por lá.';
+            info.style.color = 'var(--accent-color)';
+            info.style.fontWeight = '500';
+            info.style.marginTop = 'var(--spacing-sm)';
+    
+            lastFormGroup.insertAdjacentElement('afterend', info);
+    
+            // reset do form e botão
+            contactForm.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+    
             setTimeout(() => {
-                // Mostrar mensagem de sucesso
-                const formGroups = this.querySelectorAll('.form-group');
-                const lastFormGroup = formGroups[formGroups.length - 1];
-                
-                const successMessage = document.createElement('div');
-                successMessage.className = 'success-message';
-                successMessage.textContent = 'Mensagem enviada com sucesso!';
-                successMessage.style.color = 'var(--accent-color)';
-                successMessage.style.fontWeight = '500';
-                successMessage.style.marginTop = 'var(--spacing-sm)';
-                
-                // Inserir mensagem após o último form-group
-                lastFormGroup.insertAdjacentElement('afterend', successMessage);
-                
-                // Resetar formulário
-                contactForm.reset();
-                
-                // Restaurar botão
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-                
-                // Remover mensagem após alguns segundos
-                setTimeout(() => {
-                    successMessage.style.opacity = '0';
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 300);
-                }, 3000);
-            }, 1500);
+            info.style.opacity = '0';
+            setTimeout(() => { info.remove(); }, 300);
+            }, 3000);
+        }, 600);
         });
     }
 });
