@@ -122,39 +122,113 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===== Filtro de Projetos =====
+    // ===== Filtro de Projetos + "Ver mais" =====
     if (filterBtns.length > 0 && projectCards.length > 0) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remover classe active de todos os botões
-                filterBtns.forEach(b => b.classList.remove('active'));
-                
-                // Adicionar classe active ao botão clicado
-                btn.classList.add('active');
-                
-                const filterValue = btn.getAttribute('data-filter');
-                
-                // Filtrar projetos
-                projectCards.forEach(card => {
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                        // Mostrar com animação fade in
-                        card.style.opacity = '0';
-                        card.style.display = 'block';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 100);
-                    } else {
-                        // Esconder com animação fade out
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
+        const grid = document.querySelector(".projects-grid");
+        const MAX_VISIBLE = 6;
+        let viewMoreWrap = null;
+    
+        // cria/garante wrapper do botão
+        function ensureViewMoreWrap() {
+        if (!viewMoreWrap) {
+            viewMoreWrap = document.createElement("div");
+            viewMoreWrap.className = "view-more-wrap";
+            grid.insertAdjacentElement("afterend", viewMoreWrap);
+        }
+        return viewMoreWrap;
+        }
+    
+        // aplica filtro + limita a 6
+        function applyFilter(filterValue) {
+        // 1) filtra quais devem ficar visíveis por categoria
+        const match = [];
+        const hide = [];
+    
+        projectCards.forEach(card => {
+            const category = card.getAttribute("data-category");
+            const inFilter = (filterValue === "all" || category === filterValue);
+            if (inFilter) {
+            match.push(card);
+            } else {
+            hide.push(card);
+            }
         });
-    }
+    
+        // 2) esconde os que não pertencem ao filtro
+        hide.forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(20px)";
+            setTimeout(() => {
+            card.classList.remove("is-hidden"); // para não acumular classe
+            card.style.display = "none";
+            }, 150);
+        });
+    
+        // 3) mostra apenas os 6 primeiros do filtro
+        match.forEach((card, idx) => {
+            card.style.removeProperty("display");
+            // usa classe para esconder > 6
+            if (idx < MAX_VISIBLE) {
+            card.classList.remove("is-hidden");
+            setTimeout(() => {
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
+            }, 50);
+            } else {
+            card.classList.add("is-hidden");
+            }
+        });
+    
+        // 4) botão "Ver mais / Ver menos" (só aparece se houver mais de 6)
+        const wrap = ensureViewMoreWrap();
+        wrap.innerHTML = ""; // limpa anterior
+    
+        const hasMore = match.length > MAX_VISIBLE;
+        if (hasMore) {
+            const btn = document.createElement("button");
+            btn.className = "btn btn-small view-more-btn";
+            btn.textContent = "Ver mais";
+
+            let expanded = false;
+    
+            btn.addEventListener("click", () => {
+                if (!expanded) {
+                    // Mostrar todos
+                    match.forEach(card => card.classList.remove("is-hidden"));
+                    btn.textContent = "Ver menos";
+                    expanded = true;
+                } else {
+                    // Voltar a mostrar apenas os 6 primeiros
+                    match.forEach((card, idx) => {
+                        if (idx < MAX_VISIBLE) {
+                            card.classList.remove("is-hidden");
+                        } else {
+                            card.classList.add("is-hidden");
+                        }
+                    });
+                    btn.textContent = "Ver mais";
+                    expanded = false;
+                }
+            });
+    
+            wrap.appendChild(btn);
+        }
+        }
+    
+        // clique nos botões de filtro (mantendo sua UX atual)
+        filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            filterBtns.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            const filterValue = btn.getAttribute("data-filter");
+            applyFilter(filterValue);
+        });
+        });
+    
+        // estado inicial: usa o botão que já vem com .active
+        const initial = document.querySelector(".filter-btn.active");
+        applyFilter(initial ? initial.getAttribute("data-filter") : "all");
+    }  
 
     // ===== Card Flip Interativo =====
     const flipCard = document.querySelector('.flip-card');

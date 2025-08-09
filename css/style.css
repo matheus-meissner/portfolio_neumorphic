@@ -1565,6 +1565,35 @@ textarea {
   width: 100%;
 }
 
+/* ===== Projetos: Ver mais ===== */
+.project-card.is-hidden {
+    display: none;
+  }
+  
+  .view-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-md);
+  }
+  
+  .view-more-btn {
+    /* reaproveita a estética do seu .btn */
+    padding: 0.5rem 1.5rem;
+    background-color: var(--element-color);
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-family: var(--font-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-small);
+  }
+  
+  .view-more-btn:hover {
+    box-shadow: var(--shadow-inset-small);
+  }
+  
+
 /* Responsivo */
 @media (max-width: 900px){
   .contato .contact-content{
