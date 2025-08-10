@@ -280,6 +280,61 @@ textarea {
     color: var(--accent-color);
 }
 
+/* Layout do <nav> para alinhar menu + botão lado a lado */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* Botão toggle neumórfico */
+.lang-toggle {
+position: relative;
+display: inline-flex;
+align-items: center;
+gap: 36px;                 /* espaço visual entre PT e EN */
+padding: 8px 14px;
+background: var(--element-color);
+border: none;
+border-radius: 999px;
+box-shadow: var(--shadow-medium);
+cursor: pointer;
+transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+user-select: none;
+}
+
+.lang-toggle:hover { box-shadow: var(--shadow-small); transform: translateY(1px); }
+.lang-toggle:active { box-shadow: var(--shadow-inset-small); }
+
+/* “pastilha” que desliza */
+.lang-toggle .toggle-thumb {
+position: absolute;
+width: 32px;
+height: 32px;
+border-radius: 50%;
+left: 10px;               /* começa em PT */
+box-shadow: var(--shadow-medium);
+background: var(--bg-color);
+transition: left var(--transition-normal);
+}
+
+/* texto PT/EN */
+.lang-toggle .lang-option {
+font-weight: 600;
+color: var(--text-primary);
+font-size: 0.9rem;
+}
+
+/* quando EN estiver ativo */
+.lang-toggle[aria-pressed="true"] .toggle-thumb { left: calc(100% - 42px); }
+
+/* responsivo: mantém botão acessível no mobile */
+@media (max-width: 768px) {
+.nav { gap: var(--spacing-sm); }
+}
+  
+
+
 .nav-menu {
     display: flex;
     align-items: center;

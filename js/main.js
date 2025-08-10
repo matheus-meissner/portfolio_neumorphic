@@ -15,6 +15,174 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalCloseButtons = document.querySelectorAll('.modal-close');
     const backToProjectsLinks = document.querySelectorAll('.back-to-projects');
     const modalOverlays = document.querySelectorAll('.modal-overlay');
+
+    // ===== Toggle de linguagem (PT <-> EN) =====
+    const langToggle = document.getElementById('langToggle');
+
+    // Mapeamento de textos por seletor (sem precisar trocar HTML)
+    const i18n = {
+    pt: {
+        'a.nav-link[href="#home"]': 'Home',
+        'a.nav-link[href="#sobre"]': 'Sobre',
+        'a.nav-link[href="#tecnologias"]': 'Tecnologias',
+        'a.nav-link[href="#certificacoes"]': 'Certificações',
+        'a.nav-link[href="#experiencia"]': 'Experiência',
+        'a.nav-link[href="#educacao"]': 'Educação',
+        'a.nav-link[href="#projetos"]': 'Projetos',
+        'a.nav-link[href="#contato"]': 'Contato',
+
+        '#home .hero-text h1': 'Olá, eu sou Matheus Meissner',
+        '#home .hero-text h2': 'Dynamics Developer & Functional Consultant',
+        '.flip-message': 'Role pra baixo e me conheça melhor',
+
+        '#sobre .section-header h2': 'Sobre Mim',
+        '#sobre .section-header p': 'Conheça um pouco da minha história e experiência',
+
+        '#tecnologias .section-header h2': 'Tecnologias',
+        '#tecnologias .section-header p': 'Ferramentas e linguagens que utilizo no dia a dia',
+
+        '#certificacoes .section-header h2': 'Certificações',
+        '#certificacoes .section-header p': 'Certificados e Licenças',
+
+        '#experiencia .section-header h2': 'Experiência',
+        '#experiencia .section-header p': 'Minha trajetória profissional',
+        '#experiencia .timeline-card .timeline-date': '2024 ~ Presente',
+        // --- Best.Projects ---
+        '#experiencia .timeline-item:nth-child(1) .timeline-description p:nth-child(1)': 'Após o período de estágio, fui efetivado como Desenvolvedor & Consultor Funcional, atuando de forma estratégica na entrega de soluções completas dentro da Power Platform.',
+        '#experiencia .timeline-item:nth-child(1) .timeline-description p:nth-child(2)': 'Desenvolvo fluxos avançados no Power Automate, aplicativos em Canvas App, Custom APIs e customizações no Dynamics, garantindo integração, desempenho e aderência às regras de negócio.',
+        '#experiencia .timeline-item:nth-child(1) .timeline-description p:nth-child(3)': 'Produzo documentações técnicas, participo de reuniões com clientes, gerencio papéis de segurança e estruturo unidades organizacionais, utilizando Azure Functions e implementando soluções de IA no stack Microsoft para automações e otimização de processos.',
+        // --- Atma Entretenimento ---
+        '#experiencia .timeline-item:nth-child(2) .timeline-description p:nth-child(1)': 'No time de desenvolvimento da empresa, utilizei Python para criar ferramentas que otimizaram processos do setor de pré-produção, aumentando a eficiência, a precisão e a rentabilidade. Minha criatividade foi essencial para identificar e implementar soluções, enquanto meu bom relacionamento interpessoal facilitou a colaboração entre equipes.',
+        '#experiencia .timeline-item:nth-child(2) .timeline-description p:nth-child(2)': 'Na Atma Entretenimento, atuei na tradução, adaptação e preparação de materiais para dublagem, operando o software VoiceQ e garantindo qualidade e precisão. Meu inglês fluente e japonês básico foram fundamentais para projetos internacionais e traduções culturalmente adequadas.',
+
+        // --- Kumon ---
+        '#experiencia .timeline-item:nth-child(3) .timeline-description p:nth-child(1)': 'Atuei como professor orientador do método Kumon em língua inglesa, personalizando planos de estudo conforme as necessidades de cada aluno e acompanhando seu progresso. Desenvolvi habilidades em ensino, orientação e adaptação de materiais, aprimorando minha comunicação e paciência.',
+        '#experiencia .timeline-item:nth-child(3) .timeline-description p:nth-child(2)': 'O ponto mais gratificante foi criar conexões significativas com os alunos, apoiando seu desenvolvimento acadêmico, pessoal e social.',
+
+        '#educacao .section-header h2': 'Educação',
+        '#educacao .section-header p': 'Minha jornada acadêmica',
+
+        '#projetos .section-header h2': 'Meus Projetos',
+        '#projetos .section-header p': 'Trabalhos recentes e destaques do meu portfólio',
+
+        '#contato .section-header h2': 'Entre em Contato',
+        '#contato .section-header p': 'Vamos conversar sobre seu próximo projeto',
+
+        '.hero-cta a.btn.btn-primary': 'Entre em contato',
+
+        '#sobre .scroll-card h3': 'Quem sou eu?',
+        '#sobre .scroll-card p': 'Sou Software Developer & Functional Consultant na Best.Projects, atuando no ecossistema Microsoft com Power Apps, Power Automate, Dynamics 365, Azure Functions, APIs REST, plugins em C#, JavaScript e CanvasApp, além de documentações técnicas e funcionais. Utilizo Copilot e modelos GPT para acelerar análises e desenvolvimento, explorando o potencial da IA em soluções corporativas com foco em integração ao Dataverse, escalabilidade, inovação e impacto real.',
+      
+        '#sobre .stats-container .stat-card:nth-child(1) .stat-label': 'Anos de experiência',
+        '#sobre .stats-container .stat-card:nth-child(2) .stat-label': 'Projetos Concluídos',
+        '#sobre .stats-container .stat-card:nth-child(3) .stat-label': 'Certificações',
+
+        // cartões de contato
+        '#contato .info-details h4:nth-of-type(1)': 'Email',
+        '#contato .info-details h4:nth-of-type(2)': 'Telefone',
+        '#contato .info-details h4:nth-of-type(3)': 'Localização',
+
+        // botões de CV
+        '.cv-button .btn.btn-primary': 'Download CV Português',
+        '.cv-button-english .btn.btn-primary': 'Download CV English',
+    },
+    en: {
+        'a.nav-link[href="#home"]': 'Home',
+        'a.nav-link[href="#sobre"]': 'About',
+        'a.nav-link[href="#tecnologias"]': 'Tech',
+        'a.nav-link[href="#certificacoes"]': 'Certifications',
+        'a.nav-link[href="#experiencia"]': 'Experience',
+        'a.nav-link[href="#educacao"]': 'Education',
+        'a.nav-link[href="#projetos"]': 'Projects',
+        'a.nav-link[href="#contato"]': 'Contact',
+
+        '#home .hero-text h1': "Hi, I'm Matheus Meissner",
+        '#home .hero-text h2': 'Dynamics Developer & Functional Consultant',
+        '.flip-message': 'Scroll down and get to know me',
+
+        '#sobre .section-header h2': 'About Me',
+        '#sobre .section-header p': 'Learn a bit about my story and background',
+
+        '#tecnologias .section-header h2': 'Technologies',
+        '#tecnologias .section-header p': 'Tools and languages I use daily',
+
+        '#certificacoes .section-header h2': 'Certifications',
+        '#certificacoes .section-header p': 'Certificates and Licenses',
+
+        '#experiencia .section-header h2': 'Experience',
+        '#experiencia .section-header p': 'My professional journey',
+        '#experiencia .timeline-card .timeline-date': '2024 ~ Present',
+        // --- Best.Projects ---
+        '#experiencia .timeline-item:nth-child(1) .timeline-description p:nth-child(1)': 'After my internship period, I was hired as a Developer & Functional Consultant, working strategically on delivering complete solutions within the Power Platform.',
+        '#experiencia .timeline-item:nth-child(1) .timeline-description p:nth-child(2)': 'I develop advanced flows in Power Automate, Canvas Apps, Custom APIs, and Dynamics customizations, ensuring integration, performance, and adherence to business rules.',
+        '#experiencia .timeline-item:nth-child(1) .timeline-description p:nth-child(3)': 'I produce technical documentation, participate in client meetings, manage security roles, and structure organizational units, using Azure Functions and implementing AI solutions in the Microsoft stack for automation and process optimization.',
+        // --- Atma Entretenimento ---
+        '#experiencia .timeline-item:nth-child(2) .timeline-description p:nth-child(1)': 'In the company\'s development team, I used Python to create tools that optimized pre-production processes, increasing efficiency, accuracy, and profitability. My creativity was essential for identifying and implementing solutions, while my strong interpersonal skills facilitated collaboration among teams.',
+        '#experiencia .timeline-item:nth-child(2) .timeline-description p:nth-child(2)': 'At Atma Entretenimento, I worked on translation, adaptation, and preparation of dubbing materials, operating the VoiceQ software and ensuring quality and precision. My fluent English and basic Japanese were essential for international projects and culturally appropriate translations.',
+
+        // --- Kumon ---
+        '#experiencia .timeline-item:nth-child(3) .timeline-description p:nth-child(1)': 'I worked as an instructor for the Kumon method in English, customizing study plans according to each student\'s needs and monitoring their progress. I developed skills in teaching, guidance, and material adaptation, improving my communication and patience.',
+        '#experiencia .timeline-item:nth-child(3) .timeline-description p:nth-child(2)': 'The most rewarding aspect was building meaningful connections with students, supporting their academic, personal, and social development.',
+
+        '#educacao .section-header h2': 'Education',
+        '#educacao .section-header p': 'My academic path',
+
+        '#projetos .section-header h2': 'My Projects',
+        '#projetos .section-header p': 'Recent work and portfolio highlights',
+
+        '#contato .section-header h2': 'Get in Touch',
+        '#contato .section-header p': "Let's talk about your next project",
+
+        '.hero-cta a.btn.btn-primary': 'Get in touch',
+
+        '#sobre .scroll-card h3': 'Who am I?',
+        '#sobre .scroll-card p': 'I am a Software Developer & Functional Consultant at Best.Projects, working in the Microsoft ecosystem with Power Apps, Power Automate, Dynamics 365, Azure Functions, REST APIs, plugins in C#, JavaScript, and CanvasApp, as well as technical and functional documentation. I use Copilot and GPT models to speed up analysis and development, exploring the potential of AI in corporate solutions focused on Dataverse integration, scalability, innovation, and real impact.',
+
+        '#sobre .stats-container .stat-card:nth-child(1) .stat-label': 'Years of Experience',
+        '#sobre .stats-container .stat-card:nth-child(2) .stat-label': 'Projects Completed',
+        '#sobre .stats-container .stat-card:nth-child(3) .stat-label': 'Certifications',
+
+        // contact cards
+        '#contato .info-details h4:nth-of-type(1)': 'Email',
+        '#contato .info-details h4:nth-of-type(2)': 'Phone',
+        '#contato .info-details h4:nth-of-type(3)': 'Location',
+
+        // CV buttons
+        '.cv-button .btn.btn-primary': 'Download CV (PT)',
+        '.cv-button-english .btn.btn-primary': 'Download CV (EN)',
+    }
+    };
+
+    function applyLanguage(lang) {
+    const dict = i18n[lang];
+    Object.keys(dict).forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) el.textContent = dict[sel];
+    });
+
+    // html lang + toggle UI
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+    if (langToggle) langToggle.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+
+    // guarda preferência
+    localStorage.setItem('lang', lang);
+    }
+
+    // estado inicial
+    const savedLang = localStorage.getItem('lang') || 'pt';
+    applyLanguage(savedLang);
+
+    // clique no toggle
+    if (langToggle) {
+    langToggle.addEventListener('click', () => {
+        const current = localStorage.getItem('lang') || 'pt';
+        const next = current === 'pt' ? 'en' : 'pt';
+        applyLanguage(next);
+    });
+    }
+
+
+
     
     // ===== Navegação e Header =====
     
