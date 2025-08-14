@@ -1704,3 +1704,11 @@ box-shadow: var(--shadow-small);
 #experiencia .timeline,
 #educacao   .timeline { padding-bottom: var(--spacing-sm); } /* de 2rem -> 1rem */
 
+.diferentao1{
+    height: 51.2px;
+}
+
+.diferentao2{
+    height: 76.8px;
+}
+
