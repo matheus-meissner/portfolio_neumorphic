@@ -1251,7 +1251,8 @@ font-size: 0.8rem;
 .footer {
     background-color: var(--element-color);
     padding: var(--spacing-lg) 0 var(--spacing-sm);
-    margin-top: var(--spacing-xl);
+    /* margin-top: var(--spacing-xl); */
+    padding-top: 0;
     box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
 }
 
@@ -1306,6 +1307,10 @@ font-size: 0.8rem;
     border-top: 1px solid var(--shadow-dark);
     color: var(--text-secondary);
 }
+
+/* Footer: remover o espaço (faixa roxa) acima do copyright */
+.footer .container { gap: 0; }            /* zera qualquer gap vertical do container */
+.footer-content { margin-bottom: 0; }     /* remove o espaço antes do .footer-bottom */
 
 /* ===== Botão Voltar ao Topo ===== */
 .back-to-top {
