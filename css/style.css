@@ -1154,6 +1154,11 @@ font-size: 0.8rem;
 .project-info p {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-sm);
+    height: 128px;
+}
+
+.project-info a {
+    margin-top: 15px;
 }
 
 .project-tags {
