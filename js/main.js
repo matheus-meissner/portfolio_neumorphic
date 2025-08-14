@@ -77,10 +77,17 @@ document.addEventListener('DOMContentLoaded', function() {
         '#sobre .stats-container .stat-card:nth-child(2) .stat-label': 'Projetos Concluídos',
         '#sobre .stats-container .stat-card:nth-child(3) .stat-label': 'Certificações',
 
-        // cartões de contato
-        '#contato .info-details h4:nth-of-type(1)': 'Email',
-        '#contato .info-details h4:nth-of-type(2)': 'Telefone',
-        '#contato .info-details h4:nth-of-type(3)': 'Localização',
+        // PT (mantenha como padrão)
+        '#contato .section-header h2': 'Entre em Contato',
+        '#contato .section-header p': 'Vamos conversar sobre seu próximo projeto',
+        '#contato .contact-info .info-item:nth-child(1) .info-details h4': 'Email',
+        '#contato .contact-info .info-item:nth-child(2) .info-details h4': 'Telefone',
+        '#contato .contact-info .info-item:nth-child(3) .info-details h4': 'Localização',
+        '#contato label[for="name"]': 'Nome',
+        '#contato label[for="email"]': 'Email',
+        '#contato label[for="subject"]': 'Assunto',
+        '#contato label[for="message"]': 'Mensagem',
+        '#contactForm button[type="submit"]': 'Enviar Mensagem',
 
         // botões de CV
         '.cv-button .btn.btn-primary': 'Download CV (PT)',
@@ -170,9 +177,16 @@ document.addEventListener('DOMContentLoaded', function() {
         '#sobre .stats-container .stat-card:nth-child(3) .stat-label': 'Certifications',
 
         // contact cards
-        '#contato .info-details h4:nth-of-type(1)': 'Email',
-        '#contato .info-details h4:nth-of-type(2)': 'Phone',
-        '#contato .info-details h4:nth-of-type(3)': 'Location',
+        '#contato .section-header h2': 'Get in Touch',
+        '#contato .section-header p': "Let's talk about your next project",
+        '#contato .contact-info .info-item:nth-child(1) .info-details h4': 'Email',
+        '#contato .contact-info .info-item:nth-child(2) .info-details h4': 'Phone',
+        '#contato .contact-info .info-item:nth-child(3) .info-details h4': 'Location',
+        '#contato label[for="name"]': 'Name',
+        '#contato label[for="email"]': 'Email',
+        '#contato label[for="subject"]': 'Subject',
+        '#contato label[for="message"]': 'Message',
+        '#contactForm button[type="submit"]': 'Send Message',
 
         // CV buttons
         '.cv-button .btn.btn-primary': 'Download CV (PT)',
