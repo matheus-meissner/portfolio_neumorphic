@@ -24,6 +24,7 @@
 
 .timeline-item {
     padding: 0 0 var(--spacing-xl) 80px;
+    padding-bottom: 50px;
     position: relative;
 }
 
@@ -88,6 +89,11 @@
 
 .timeline-description p {
     margin-bottom: var(--spacing-sm);
+}
+
+.especifico_formatacao {
+    min-height: 102.4px;
+    max-height: 102.4px;
 }
 
 .tech-used {

@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
         '#contato .info-details h4:nth-of-type(3)': 'Localização',
 
         // botões de CV
-        '.cv-button .btn.btn-primary': 'Download CV Português',
-        '.cv-button-english .btn.btn-primary': 'Download CV English',
+        '.cv-button .btn.btn-primary': 'Download CV (PT)',
+        '.cv-button-english .btn.btn-primary': 'Download CV (EN)',
     },
     en: {
         'a.nav-link[href="#home"]': 'Home',

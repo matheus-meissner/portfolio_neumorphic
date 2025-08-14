@@ -126,12 +126,13 @@ img {
 
 section {
     padding: var(--spacing-xl) 0;
+    
 }
 
 
 .section-header {
     text-align: center;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
 }
 
 .section-header h2 {
@@ -859,6 +860,8 @@ font-size: 0.8rem;
     transform: translateY(50px);
     opacity: 0;
     transition: transform 0.6s ease, opacity 0.6s ease;
+    min-width: 620px; /* largura do container PT-BR */
+    max-width: 620px; /* mantém a largura fixa */
 }
 
 .scroll-card.visible {
@@ -1181,7 +1184,7 @@ font-size: 0.8rem;
 .info-item {
     display: flex;
     align-items: center;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 15px;
 }
 
 .info-icon {
@@ -1538,7 +1541,7 @@ font-size: 0.8rem;
 
 .contato .contact-info{
   display: grid;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
 }
 
 .contato .info-item{
@@ -1683,4 +1686,16 @@ box-shadow: var(--shadow-small);
   }
   .contato .contact-form{ padding: var(--spacing-sm); }
 }
+
+/* Remove o padding extra do último item da timeline */
+#experiencia .timeline-item:last-child,
+#educacao   .timeline-item:last-child { padding-bottom: 0; }
+
+/* Opcional: aproxime ainda mais as seções */
+.experiencia { padding-bottom: var(--spacing-lg); } /* de 5rem -> 3rem */
+.educacao   { padding-top:    var(--spacing-lg); } /* de 5rem -> 3rem */
+
+/* (Se precisar) reduza também o padding interno da timeline */
+#experiencia .timeline,
+#educacao   .timeline { padding-bottom: var(--spacing-sm); } /* de 2rem -> 1rem */
 
