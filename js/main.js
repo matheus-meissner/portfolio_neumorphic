@@ -613,7 +613,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         // desabilita botão enquanto preparamos o mailto
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Abrindo seu e-mail...';
+        submitBtn.textContent = 'Abrindo seu e-mail';
     
         // monta o link mailto (remetente vai no corpo; não dá pra setar "From" via mailto)
         const body = `De: ${email}\n\n${message}${name ? `\n\n— ${name}` : ''}`;
@@ -629,7 +629,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
             const info = document.createElement('div');
             info.className = 'success-message';
-            info.textContent = 'Cliente de e-mail aberto. Finalize o envio por lá.';
+            // info.textContent = 'Cliente de e-mail aberto. Finalize o envio por lá.';
             info.style.color = 'var(--accent-color)';
             info.style.fontWeight = '500';
             info.style.marginTop = 'var(--spacing-sm)';

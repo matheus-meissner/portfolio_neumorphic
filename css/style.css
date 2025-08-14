@@ -1558,6 +1558,7 @@ font-size: 0.8rem;
   border-radius: var(--border-radius-md);
   padding: 12px 16px;
   box-shadow: var(--shadow-medium);
+  
 }
 
 /* torna o anchor um "card" visual, herdando cores */
@@ -1637,6 +1638,7 @@ box-shadow: var(--shadow-small);
   border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-medium);
   padding: var(--spacing-md);
+  width: 400px;
 }
 
 .contato .form-group{
@@ -1653,6 +1655,13 @@ box-shadow: var(--shadow-small);
 .contato .btn.btn-primary{
   width: 100%;
 }
+
+/* reduz só a caixa de mensagem do contato */
+#contactForm #message {
+  min-height: 90px;   /* ajuste o valor que preferir */
+  height: 90px;       /* garante a altura desejada */
+}
+
 
 /* ===== Projetos: Ver mais ===== */
 .project-card.is-hidden {
