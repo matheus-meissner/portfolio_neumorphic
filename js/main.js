@@ -85,6 +85,33 @@ document.addEventListener('DOMContentLoaded', function() {
         // botões de CV
         '.cv-button .btn.btn-primary': 'Download CV (PT)',
         '.cv-button-english .btn.btn-primary': 'Download CV (EN)',
+
+        // ===== Educação (timeline) =====
+        // --- PT ---
+        '#educacao .timeline-item:nth-child(1) .timeline-date': '2025 - Presente',
+        '#educacao .timeline-item:nth-child(1) .timeline-content h3': 'Inteligência Artificial',
+        '#educacao .timeline-item:nth-child(1) .timeline-content h4': 'FIAP',
+        '#educacao .timeline-item:nth-child(1) .timeline-content p':
+          'Curso superior de Tecnologia em Inteligência Artificial, Machine Learning, IA Generativa e Natural Language Processing.',
+
+        '#educacao .timeline-item:nth-child(2) .timeline-date': '2024 - Presente',
+        '#educacao .timeline-item:nth-child(2) .timeline-content h3': 'Análise e Desenvolvimento de Sistemas',
+        '#educacao .timeline-item:nth-child(2) .timeline-content h4': 'Universidade Anhembi Morumbi',
+        '#educacao .timeline-item:nth-child(2) .timeline-content p':
+          'Curso superior de Análise e Desenvolvimento de Sistemas, com foco em programação, banco de dados e desenvolvimento web.',
+
+        '#educacao .timeline-item:nth-child(3) .timeline-date': '2023 - 2025',
+        '#educacao .timeline-item:nth-child(3) .timeline-content h3': 'Full Stack Python',
+        '#educacao .timeline-item:nth-child(3) .timeline-content h4': 'EBAC',
+        '#educacao .timeline-item:nth-child(3) .timeline-content p':
+          'Curso profissionalizante em desenvolvimento Full Stack com Python, incluindo Django, Flask e desenvolvimento de APIs, além de desenvolvimento de aplicações web e integração com bancos de dados, front-end development e deploy de aplicações.',
+
+        '#educacao .timeline-item:nth-child(4) .timeline-date': '2019 - 2022',
+        '#educacao .timeline-item:nth-child(4) .timeline-content h3': 'Produção Fonográfica',
+        '#educacao .timeline-item:nth-child(4) .timeline-content h4': 'FATEC Tatuí',
+        '#educacao .timeline-item:nth-child(4) .timeline-content p':
+          'Curso superior de Tecnologia em Produção Fonográfica, com foco em áudio, música e produção musical.',
+
     },
     en: {
         'a.nav-link[href="#home"]': 'Home',
@@ -150,6 +177,33 @@ document.addEventListener('DOMContentLoaded', function() {
         // CV buttons
         '.cv-button .btn.btn-primary': 'Download CV (PT)',
         '.cv-button-english .btn.btn-primary': 'Download CV (EN)',
+
+        // ===== Educação (timeline) =====
+        // --- EN ---
+
+        '#educacao .timeline-item:nth-child(1) .timeline-date': '2025 - Present',
+        '#educacao .timeline-item:nth-child(1) .timeline-content h3': 'Artificial Intelligence',
+        '#educacao .timeline-item:nth-child(1) .timeline-content h4': 'FIAP',
+        '#educacao .timeline-item:nth-child(1) .timeline-content p':
+          'Undergraduate program in AI Technology, Machine Learning, Generative AI, and Natural Language Processing.',
+
+        '#educacao .timeline-item:nth-child(2) .timeline-date': '2024 - Present',
+        '#educacao .timeline-item:nth-child(2) .timeline-content h3': 'Systems Analysis and Development',
+        '#educacao .timeline-item:nth-child(2) .timeline-content h4': 'Anhembi Morumbi University',
+        '#educacao .timeline-item:nth-child(2) .timeline-content p':
+          'Undergraduate program focused on programming, databases, and web development.',
+
+        '#educacao .timeline-item:nth-child(3) .timeline-date': '2023 - 2025',
+        '#educacao .timeline-item:nth-child(3) .timeline-content h3': 'Full Stack Python',
+        '#educacao .timeline-item:nth-child(3) .timeline-content h4': 'EBAC',
+        '#educacao .timeline-item:nth-child(3) .timeline-content p':
+          'Professional training in full-stack development with Python, including Django, Flask, REST APIs, web apps, database integration, front-end, and deployment.',
+
+        '#educacao .timeline-item:nth-child(4) .timeline-date': '2019 - 2022',
+        '#educacao .timeline-item:nth-child(4) .timeline-content h3': 'Phonographic Production',
+        '#educacao .timeline-item:nth-child(4) .timeline-content h4': 'FATEC Tatuí',
+        '#educacao .timeline-item:nth-child(4) .timeline-content p':
+          'Undergraduate program in phonographic production focused on audio, music, and music production.',
     }
     };
 
