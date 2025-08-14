@@ -262,6 +262,8 @@ textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px; /* mantém a largura máxima */
+    width: 100%;
 }
 
 .logo {
@@ -292,8 +294,8 @@ textarea {
 position: relative;
 display: inline-flex;
 align-items: center;
-gap: 36px;                 /* espaço visual entre PT e EN */
-padding: 8px 14px;
+gap: 18px;                 /* espaço visual entre PT e EN */
+padding: 8px 10px;
 background: var(--element-color);
 border: none;
 border-radius: 999px;
@@ -301,6 +303,7 @@ box-shadow: var(--shadow-medium);
 cursor: pointer;
 transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 user-select: none;
+flex-shrink: 0;
 }
 
 .lang-toggle:hover { box-shadow: var(--shadow-small); transform: translateY(1px); }
@@ -309,10 +312,11 @@ user-select: none;
 /* “pastilha” que desliza */
 .lang-toggle .toggle-thumb {
 position: absolute;
-width: 32px;
-height: 32px;
+width: 28px;
+height: 28px;
 border-radius: 50%;
-left: 10px;               /* começa em PT */
+top: 0%;
+left:5px;               /* começa em PT */
 box-shadow: var(--shadow-medium);
 background: var(--bg-color);
 transition: left var(--transition-normal);
@@ -322,11 +326,11 @@ transition: left var(--transition-normal);
 .lang-toggle .lang-option {
 font-weight: 600;
 color: var(--text-primary);
-font-size: 0.9rem;
+font-size: 0.8rem;
 }
 
 /* quando EN estiver ativo */
-.lang-toggle[aria-pressed="true"] .toggle-thumb { left: calc(100% - 42px); }
+.lang-toggle[aria-pressed="true"] .toggle-thumb { left: calc(100% - 35px); }
 
 /* responsivo: mantém botão acessível no mobile */
 @media (max-width: 768px) {
@@ -338,10 +342,13 @@ font-size: 0.9rem;
 .nav-menu {
     display: flex;
     align-items: center;
+    justify-content: flex-end; /* mantém alinhado à direita */
+    min-width: 600px;   
 }
 
 .nav-menu li {
-    margin-left: var(--spacing-md);
+    min-width: 120px;  /* espaço padrão p/ cada item */
+    text-align: center; /* centraliza texto menor */
 }
 
 .nav-link {
@@ -349,6 +356,7 @@ font-size: 0.9rem;
     font-weight: 500;
     position: relative;
     padding: 0.5rem 0;
+    white-space: nowrap; /* evita quebra de linha no texto */
 }
 
 .nav-link::after {
