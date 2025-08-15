@@ -1467,10 +1467,7 @@ font-size: 0.8rem;
         text-align: left;
     }
     
-    .timeline-content {
-        margin-left: 80px;
-        margin-right: 0;
-    }
+
     
     .timeline-item:nth-child(even) .timeline-content {
         margin-left: 80px;
@@ -1564,10 +1561,6 @@ font-size: 0.8rem;
     
     .section-header h2 {
         font-size: 1.8rem;
-    }
-    
-    .timeline-content {
-        margin-left: 60px;
     }
     
     .timeline-date {

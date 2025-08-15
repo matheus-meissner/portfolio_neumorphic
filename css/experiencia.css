@@ -18,19 +18,16 @@
     background-color: var(--shadow-dark);
     top: 0;
     bottom: 0;
-    left: 50px;
     margin-left: -1px;
 }
 
 .timeline-item {
-    padding: 0 0 var(--spacing-xl) 80px;
     padding-bottom: 50px;
     position: relative;
 }
 
 .timeline-dot {
     position: absolute;
-    left: 35px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -91,9 +88,34 @@
     margin-bottom: var(--spacing-sm);
 }
 
-.especifico_formatacao {
-    min-height: 102.4px;
-    max-height: 102.4px;
+/* tira a altura fixa */
+.especifico_formatacao{ min-height:auto; max-height:none; }
+
+/* deixa todas as descrições com o MESMO nº de linhas por breakpoint */
+.experiencia .especifico_formatacao{
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* mobile (default) */
+  -webkit-line-clamp: 8;
+}
+
+/* tablet */
+@media (min-width: 600px){
+  .experiencia .especifico_formatacao{ -webkit-line-clamp: 6; }
+}
+
+/* desktop */
+@media (min-width: 1024px){
+  .experiencia .especifico_formatacao{
+    /* altura só no desktop, se quiser manter */
+    min-height: 102px;
+    max-height: 102px;
+    overflow: hidden;
+  }
 }
 
 .tech-used {
@@ -224,4 +246,28 @@
     --tl-dot-size: 30px;
   }
 }
+
+/* EXPERIÊNCIA — neutraliza overrides globais da data */
+.experiencia .timeline-card{ position: relative; }
+
+.experiencia .timeline-date{
+  position: static;           /* entra no fluxo do card */
+  left: auto;                 /* zera deslocamentos */
+  margin: 0 0 var(--spacing-xs) 0;
+  transform: none;
+  text-align: inherit;
+  display: inline-block;      /* tamanho do conteúdo */
+}
+
+/* Garante que nada global recoloque o conteúdo para a direita */
+.experiencia .timeline-content,
+.experiencia .timeline-item:nth-child(even) .timeline-content {
+  margin-left: 0;
+}
+
+/* Garante que data/dot sigam o seu sistema de variáveis */
+.experiencia .timeline-date { left: auto; margin: 0 0 var(--spacing-xs) 0; }
+.experiencia .timeline-dot,
+.experiencia .timeline::before { left: var(--tl-left); }
+
 
