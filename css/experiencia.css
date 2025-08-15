@@ -112,3 +112,116 @@
     color: var(--accent-color);
     box-shadow: var(--shadow-small);
 }
+
+/* ===========================
+   TIMELINE: Mobile-first + Gutters com variáveis
+   Mantemos tudo escopado à seção .experiencia
+   =========================== */
+
+/* Mobile (default) – gutter pequeno para o card ocupar a tela */
+.experiencia {
+  --tl-left: 26px;         /* posição da linha + dot */
+  --tl-gap: 14px;          /* espaço entre a linha e o card */
+  --tl-dot-size: 22px;
+}
+
+/* Aplica as variáveis acima */
+.experiencia .timeline::before { left: var(--tl-left); }
+.experiencia .timeline-dot{
+  left: var(--tl-left);
+  width: var(--tl-dot-size);
+  height: var(--tl-dot-size);
+  font-size: .70rem;
+}
+.experiencia .timeline-item{
+  /* o card ocupa “quase tudo”; só abrimos espaço p/ a linha + dot */
+  padding: 0 0 var(--spacing-lg) calc(var(--tl-left) + var(--tl-gap));
+}
+.experiencia .timeline-content{ margin-left: 0; }   /* garantimos 0; o padding do item já cria o recuo */
+.experiencia .timeline-card { width: 100%; }        /* card expande no espaço que sobrou */
+.experiencia .timeline-date{
+  margin: 0 0 var(--spacing-xs) 0;                  /* data junto do card */
+}
+
+/* ===== Experiência — micro-breakpoint para telas muito estreitas (≤ 340px) ===== */
+@media (max-width: 340px) {
+  /* linha + distância do card + tamanho do dot ainda menores */
+  .experiencia{
+    --tl-left: 18px;      /* antes ~26px */
+    --tl-gap: 10px;       /* antes ~14px */
+    --tl-dot-size: 18px;  /* antes ~22px */
+  }
+
+  /* garante que nada force scroll lateral */
+  .experiencia .timeline{
+    padding-left: 0;
+    padding-right: 0;
+    overflow-x: clip;
+  }
+
+  .experiencia .timeline-item{
+    padding-bottom: var(--spacing-lg); /* mantém respiro vertical */
+  }
+
+  .experiencia .timeline-card{
+    padding: 12px;              /* cartão mais compacto */
+    border-radius: 14px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* textos do card mais enxutos */
+  .experiencia .timeline-card h3{ font-size: 1.125rem; line-height: 1.25; }
+  .experiencia .timeline-card h4{ font-size: .95rem;  line-height: 1.25; }
+  .experiencia .timeline-date{
+    font-size: .75rem;
+    padding: 6px 10px;
+  }
+
+  /* “chips”/tags mais estreitos: ajuste os seletores que você usa aí */
+  .experiencia .timeline-card .chip,
+  .experiencia .timeline-card .tag,
+  .experiencia .timeline-card .badge{
+    font-size: .78rem;
+    padding: 4px 8px;
+    margin: 6px 6px 0 0;  /* aproxima e evita quebra excessiva */
+  }
+}
+
+
+/* Tablet */
+@media (min-width: 600px){
+  .experiencia{
+    --tl-left: 32px;
+    --tl-gap: 16px;
+    --tl-dot-size: 24px;
+  }
+}
+
+/* Tablet grande / começo do desktop */
+@media (min-width: 768px){
+  .experiencia{
+    --tl-left: 44px;
+    --tl-gap: 20px;
+    --tl-dot-size: 26px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px){
+  .experiencia{
+    --tl-left: 60px;
+    --tl-gap: 24px;
+    --tl-dot-size: 28px;
+  }
+}
+
+/* Desktop grande (se quiser mais respiro) */
+@media (min-width: 1280px){
+  .experiencia{
+    --tl-left: 72px;
+    --tl-gap: 28px;
+    --tl-dot-size: 30px;
+  }
+}
+
