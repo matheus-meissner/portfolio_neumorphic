@@ -45,6 +45,9 @@
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
+
+    /* Card Projetos */
+    --project-card-w: clamp(280px, 31vw, 360px);
 }
 
 /* ===== Reset e Estilos Base ===== */
@@ -870,6 +873,8 @@ font-size: 0.8rem;
 }
 
 /* ===== Tecnologias ===== */
+/* Tecnologias: transforma em grid responsivo */
+
 .tecnologias {
     background-color: var(--bg-color);
     padding: var(--spacing-xl) 0;
@@ -1045,6 +1050,46 @@ font-size: 0.8rem;
 }
 
 /* ===== Projetos ===== */
+/* Seção Projetos */
+/* Desktop: sempre 3 colunas, centralizadas */
+@media (min-width: 1200px) {
+  #projetos .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, var(--project-card-w)));
+    justify-content: center;              /* centraliza a grade */
+    gap: var(--spacing-lg);
+  }
+  #projetos .project-card {
+    width: var(--project-card-w);         /* garante que o card não estique */
+    max-width: var(--project-card-w);
+    justify-self: center;
+  }
+}
+
+/* Tablets: 2 colunas fixas (mesma largura) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  #projetos .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, var(--project-card-w)));
+    justify-content: center;
+  }
+  #projetos .project-card {
+    width: var(--project-card-w);
+    max-width: var(--project-card-w);
+  }
+}
+
+/* Mobile: 1 coluna fluida */
+@media (max-width: 767px) {
+  #projetos .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  #projetos .project-card {
+    width: 100%;
+    max-width: 480px;  /* opcional, para não ficar gigante em telas largas no mobile landscape */
+    margin-inline: auto;
+  }
+}
+
 .icone-aba{
     height: 30px;
     margin: 0;
@@ -1726,3 +1771,100 @@ box-shadow: var(--shadow-small);
     height: 76.8px;
 }
 
+/* Centraliza a imagem no mobile/tablet */
+@media (max-width: 1024px) {
+  .sobre-image {
+    position: static;        /* libera do sticky */
+    align-self: center;      /* deixa o item seguir o centro do container */
+    height: auto;            /* evita altura “forçada” */
+  }
+
+  .image-frame {
+    margin: 0 auto;          /* garante centralização do quadro */
+  }
+
+  /* opcional, caso queira garantir */
+  .sobre-photo {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+
+/* ====== HARDENING: zero scroll horizontal em qualquer viewport ====== */
+
+/* 0) Correção de sintaxe que pode quebrar CSS subsequente */
+.perfil-image { object-position: 20% 15%; } /* remove o "/" ao final */
+
+/* 1) Header / Nav — desktop -> mobile-safe */
+@media (max-width: 1024px){
+  .nav-menu { min-width: 0; }
+  .nav-menu li { min-width: 0; }
+}
+
+/* 2) Drawer do menu mobile (uma única implementação, sem sombra fechado) */
+@media (max-width: 768px){
+  .nav-menu{
+    position: fixed;
+    top: 70px; right: 0; bottom: 0; left: 0; /* cobre abaixo do header */
+    background: var(--bg-color);
+    display: flex; flex-direction: column; align-items: center;
+    overflow-y: auto;
+    margin: 0; padding: var(--spacing-lg) 0 0;
+    transform: translateX(-100%);          /* fechado */
+    transition: transform var(--transition-normal);
+    box-shadow: none;                       /* sem sombra fechado */
+    z-index: 1200;
+  }
+  .nav-menu.active{
+    transform: translateX(0);
+    box-shadow: var(--shadow-medium);       /* só quando aberto */
+  }
+  .nav-menu li{ width: 100%; text-align: center; padding: var(--spacing-md) 0; }
+}
+
+/* 3) Sobre — torná-los fluidos em mobile */
+@media (max-width: 768px){
+  .scroll-card{
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .image-frame{
+    width: clamp(220px, 80vw, 300px);
+    height: clamp(220px, 80vw, 300px);
+  }
+  .sobre-image{ position: static; justify-content: center; } /* evita sticky empurrar */
+}
+
+/* 4) Hero — flip-card sempre cabendo na tela */
+.flip-card{
+  width: clamp(220px, 80vw, 350px);
+  height: clamp(220px, 80vw, 350px);
+}
+
+/* 5) Projetos — grade “à prova de bala” no mobile */
+@media (max-width: 767px){
+  #projetos .projects-grid{
+    display: grid !important;
+    grid-template-columns: 1fr !important;  /* 1 coluna garantida */
+    gap: var(--spacing-lg);
+  }
+  #projetos .project-card{
+    width: 100%;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+}
+
+/* 6) Salvaguardas globais contra vazamentos */
+html, body { overflow-x: hidden; }
+img, video, svg { max-width: 100%; height: auto; display: block; }
+.container { width: min(1200px, 100%); margin-inline: auto; padding-inline: var(--spacing-sm); }
+
+/* 7) Em celulares muito estreitos, reduza slightly os blocos “rigidões” */
+@media (max-width: 360px){
+  .flip-card{ width: clamp(200px, 86vw, 320px); height: clamp(200px, 86vw, 320px); }
+  .image-frame{ width: clamp(200px, 86vw, 280px); height: clamp(200px, 86vw, 280px); }
+}
