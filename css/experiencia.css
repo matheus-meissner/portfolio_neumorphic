@@ -271,3 +271,55 @@
 .experiencia .timeline::before { left: var(--tl-left); }
 
 
+/* ===========================
+   EDUCAÇÃO — hardening/overrides
+   =========================== */
+
+/* 1) Neutraliza empurrão dos itens pares vindo de style.css */
+.educacao .timeline-content,
+.educacao .timeline-item:nth-child(even) .timeline-content {
+  margin-left: 0; /* garante 0 mesmo quando houver :nth-child(even) global */
+}
+
+/* 2) Garante que data fique sempre no fluxo do card (nada de left/absolute) */
+.educacao .timeline-card { position: relative; }
+.educacao .timeline-date{
+  position: static;
+  left: auto;
+  transform: none;
+  text-align: left;
+  display: inline-block;
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+/* 3) Força linha e dot a seguirem as variáveis desta seção */
+.educacao .timeline::before,
+.educacao .timeline-dot { left: var(--tl-left); }
+
+/* 4) Logos dentro do dot: cabem bonitinhos sem cortar */
+.educacao .timeline-dot img{
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  display: block;
+}
+
+/* 5) (Opcional) Dá um respiro vertical uniforme entre itens */
+#educacao .timeline-item { padding-bottom: var(--spacing-lg); }
+#educacao .timeline-item:last-child { padding-bottom: 0; }
+
+
+/* Tablets & celulares: neutraliza o empurrão dos itens pares só na EDUCAÇÃO */
+@media (max-width: 1023.98px){
+  #educacao .timeline-item:nth-child(even) .timeline-content{
+    margin-left: 0;
+  }
+  #educacao .timeline-item:nth-child(even) .timeline-date{
+    position: static;
+    left: auto;
+    transform: none;
+    text-align: left;
+    margin: 0 0 var(--spacing-xs) 0;
+  }
+}
+

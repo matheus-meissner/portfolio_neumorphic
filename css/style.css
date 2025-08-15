@@ -1466,9 +1466,7 @@ font-size: 0.8rem;
         left: 80px;
         text-align: left;
     }
-    
 
-    
     .timeline-item:nth-child(even) .timeline-content {
         margin-left: 80px;
     }
@@ -1756,13 +1754,16 @@ box-shadow: var(--shadow-small);
 #experiencia .timeline,
 #educacao   .timeline { padding-bottom: var(--spacing-sm); } /* de 2rem -> 1rem */
 
-.diferentao1{
-    height: 51.2px;
+@media (min-width: 1200px) {
+    .diferentao1{
+        height: 51.2px;
+    }
+
+    .diferentao2{
+        height: 76.8px;
+    }
 }
 
-.diferentao2{
-    height: 76.8px;
-}
 
 /* Centraliza a imagem no mobile/tablet */
 @media (max-width: 1024px) {
