@@ -362,23 +362,31 @@ textarea { min-height: 150px; resize: vertical; }
 .filter-btn:hover { box-shadow: var(--shadow-inset-small); }
 .filter-btn.active { background-color: var(--accent-color); color: #fff; box-shadow: var(--shadow-inset-small); }
 
-/* Grid (limpo: 1/2/3 colunas) */
-#projetos .projects-grid {
+/* Grid via container (1/2/3 colunas) */
+#projetos .container {
   display: grid;
-  grid-template-columns: 1fr;            /* mobile: 1 por linha */
+  grid-template-columns: 1fr; /* mobile: 1 por linha */
   gap: var(--spacing-lg);
-  justify-content: center;
 }
-@media (min-width: 768px){
-  #projetos .projects-grid { grid-template-columns: repeat(2, minmax(0, var(--project-card-w))); }
-}
-@media (min-width: 1200px){
-  #projetos .projects-grid { grid-template-columns: repeat(3, minmax(0, var(--project-card-w))); }
-}
+/* Header e filtros ocupam a largura toda */
+#projetos .section-header,
+#projetos .projects-filter { grid-column: 1 / -1; }
+
+/* Ajuste dos cards para caberem nas colunas */
 #projetos .project-card {
-  width: var(--project-card-w);
-  max-width: var(--project-card-w);
+  width: auto;
+  max-width: none;
   justify-self: center;
+}
+
+/* Tablets: 2 colunas */
+@media (min-width: 768px){
+  #projetos .container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Desktops: 3 colunas */
+@media (min-width: 1200px){
+  #projetos .container { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 .project-card {
