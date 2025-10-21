@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== Filtro de Projetos =====
     // ===== Filtro de Projetos + "Ver mais" =====
     if (filterBtns.length > 0 && projectCards.length > 0) {
-        const grid = document.querySelector(".projects-grid");
+        const grid = document.querySelector("#projetos .container");
         const MAX_VISIBLE = 6;
         let viewMoreWrap = null;
     
