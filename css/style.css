@@ -187,6 +187,7 @@ textarea { min-height: 150px; resize: vertical; }
 
   .nav-menu {
     position: fixed;
+    justify-content: center;
     top: 70px;
     right: 0;
     bottom: 0;
@@ -212,7 +213,7 @@ textarea { min-height: 150px; resize: vertical; }
   .nav-menu li {
     width: 100%;
     text-align: center;
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-sm) 0;
   }
 
   /* Garante que o toggle de idioma não quebre o layout */
@@ -221,13 +222,14 @@ textarea { min-height: 150px; resize: vertical; }
   }
 }
 
+
+
+
 /* Quando o menu mobile estiver aberto, bloqueia o scroll da página */
 html.no-scroll,
 body.no-scroll {
   overflow: hidden;
 }
-
-
 
 .nav-link {
   color: var(--text-primary); font-weight: 500; position: relative; padding: 0.5rem 0; white-space: nowrap;
