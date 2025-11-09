@@ -434,66 +434,66 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===== Filtro de Projetos + "Ver mais" =====
-    if (filterBtns.length > 0 && projectCards.length > 0) {
-        const grid = document.querySelector("#projetos .container");
-        const MAX_VISIBLE = 6;
-        let viewMoreWrap = null;
-    
-        // cria/garante wrapper do botão
-        function ensureViewMoreWrap() {
+if (filterBtns.length > 0 && projectCards.length > 0) {
+    const grid = document.querySelector("#projetos .container");
+    const MAX_VISIBLE = 6;
+    let viewMoreWrap = null;
+
+    // Cria/garante wrapper do botão "Ver mais"
+    function ensureViewMoreWrap() {
         if (!viewMoreWrap) {
             viewMoreWrap = document.createElement("div");
             viewMoreWrap.className = "view-more-wrap";
             grid.insertAdjacentElement("afterend", viewMoreWrap);
         }
         return viewMoreWrap;
-        }
-    
-        // aplica filtro + limita a 6
-        function applyFilter(filterValue) {
-        // 1) filtra quais devem ficar visíveis por categoria
+    }
+
+    // Aplica filtro + limita a 6
+    function applyFilter(filterValue) {
         const match = [];
         const hide = [];
-    
+
+        // Separa cards que entram e que saem do filtro
         projectCards.forEach(card => {
             const category = card.getAttribute("data-category");
             const inFilter = (filterValue === "all" || category === filterValue);
+
             if (inFilter) {
-            match.push(card);
+                match.push(card);
             } else {
-            hide.push(card);
+                hide.push(card);
             }
         });
-    
-        // 2) esconde os que não pertencem ao filtro
+
+        // Esconde os que não pertencem ao filtro
         hide.forEach(card => {
             card.style.opacity = "0";
             card.style.transform = "translateY(20px)";
             setTimeout(() => {
-            card.classList.remove("is-hidden"); // para não acumular classe
-            card.style.display = "none";
+                card.classList.remove("is-hidden");
+                card.style.display = "none";
             }, 150);
         });
-    
-        // 3) mostra apenas os 6 primeiros do filtro
+
+        // Mostra apenas os 6 primeiros do filtro
         match.forEach((card, idx) => {
-            card.style.removeProperty("display");
-            // usa classe para esconder > 6
+            card.style.removeProperty("display"); // garante que volta a aparecer
             if (idx < MAX_VISIBLE) {
-            card.classList.remove("is-hidden");
-            setTimeout(() => {
-                card.style.opacity = "1";
-                card.style.transform = "translateY(0)";
-            }, 50);
+                card.classList.remove("is-hidden");
+                setTimeout(() => {
+                    card.style.opacity = "1";
+                    card.style.transform = "translateY(0)";
+                }, 50);
             } else {
-            card.classList.add("is-hidden");
+                card.classList.add("is-hidden");
             }
         });
-    
-        // 4) botão "Ver mais / Ver menos" (só aparece se houver mais de 6)
+
+        // Configura/atualiza o botão "Ver mais / Ver menos"
         const wrap = ensureViewMoreWrap();
-        wrap.innerHTML = ""; // limpa anterior
-    
+        wrap.innerHTML = "";
+
         const hasMore = match.length > MAX_VISIBLE;
         if (hasMore) {
             const btn = document.createElement("button");
@@ -501,11 +501,16 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.textContent = "Ver mais";
 
             let expanded = false;
-    
+
             btn.addEventListener("click", () => {
                 if (!expanded) {
-                    // Mostrar todos
-                    match.forEach(card => card.classList.remove("is-hidden"));
+                    // Mostrar todos os cards do filtro atual
+                    match.forEach(card => {
+                        card.classList.remove("is-hidden");
+                        card.style.removeProperty("display");   // <-- IMPORTANTE
+                        card.style.opacity = "1";                // <-- evita ficar "invisível"
+                        card.style.transform = "translateY(0)";  // <-- reseta animação
+                    });
                     btn.textContent = "Ver menos";
                     expanded = true;
                 } else {
@@ -513,6 +518,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     match.forEach((card, idx) => {
                         if (idx < MAX_VISIBLE) {
                             card.classList.remove("is-hidden");
+                            card.style.removeProperty("display");
+                            card.style.opacity = "1";
+                            card.style.transform = "translateY(0)";
                         } else {
                             card.classList.add("is-hidden");
                         }
@@ -521,25 +529,27 @@ document.addEventListener('DOMContentLoaded', function() {
                     expanded = false;
                 }
             });
-    
+
             wrap.appendChild(btn);
         }
-        }
-    
-        // clique nos botões de filtro (mantendo sua UX atual)
-        filterBtns.forEach(btn => {
+    }
+
+    // Clique nos botões de filtro
+    filterBtns.forEach(btn => {
         btn.addEventListener("click", () => {
             filterBtns.forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
+
             const filterValue = btn.getAttribute("data-filter");
             applyFilter(filterValue);
         });
-        });
-    
-        // estado inicial: usa o botão que já vem com .active
-        const initial = document.querySelector(".filter-btn.active");
-        applyFilter(initial ? initial.getAttribute("data-filter") : "all");
-    }  
+    });
+
+    // Estado inicial: usa o botão que já vem com .active
+    const initial = document.querySelector(".filter-btn.active");
+    applyFilter(initial ? initial.getAttribute("data-filter") : "all");
+}
+
 
     // ===== Card Flip Interativo =====
     const flipCard = document.querySelector('.flip-card');
