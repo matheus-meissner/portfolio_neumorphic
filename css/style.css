@@ -161,9 +161,68 @@ textarea { min-height: 150px; resize: vertical; }
 .lang-toggle[aria-pressed="true"] .toggle-thumb { left: calc(100% - 35px); }
 
 .nav-menu {
-  display: flex; align-items: center; justify-content: flex-end; min-width: 600px;
+  /* Layout desktop padrão */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  flex-wrap: nowrap;
+  /* Removido min-width fixo para evitar quebra em telas 768–1024px */
+  /* Mantém visual consistente em 1024px e 1440px */
 }
-.nav-menu li { min-width: 120px; text-align: center; }
+.nav-menu li {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+/* Mobile & Tablet até 1024px: menu vira drawer */
+@media (max-width: 1024px) {
+  .nav {
+    gap: var(--spacing-sm);
+  }
+
+  .header .nav-toggle {
+    display: block; /* Exibe o hambúrguer */
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    margin: 0;
+    padding: var(--spacing-lg) 0 0;
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+    box-shadow: none;
+    z-index: 1200;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .nav-menu li {
+    width: 100%;
+    text-align: center;
+    padding: var(--spacing-md) 0;
+  }
+
+  /* Garante que o toggle de idioma não quebre o layout */
+  .lang-toggle {
+    margin-top: var(--spacing-sm);
+  }
+}
+
+
+
 .nav-link {
   color: var(--text-primary); font-weight: 500; position: relative; padding: 0.5rem 0; white-space: nowrap;
 }
@@ -536,7 +595,7 @@ textarea { min-height: 150px; resize: vertical; }
 @media (max-width: 768px) {
   .nav { gap: var(--spacing-sm); }
   /* Drawer mobile único (translateX) */
-  .nav-menu{
+  /* .nav-menu{
     position: fixed; top: 70px; right: 0; bottom: 0; left: 0;
     background: var(--bg-color);
     display: flex; flex-direction: column; align-items: center;
@@ -546,7 +605,7 @@ textarea { min-height: 150px; resize: vertical; }
   }
   .nav-menu.active{ transform: translateX(0); box-shadow: var(--shadow-medium); }
   .nav-menu li{ width: 100%; text-align: center; padding: var(--spacing-md) 0; }
-  .nav-toggle { display: block; }
+  .nav-toggle { display: block; } */
 
   .stats-container { flex-direction: column; gap: var(--spacing-md); }
   .footer-content { flex-direction: column; text-align: center; }

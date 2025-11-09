@@ -342,7 +342,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Menu mobile toggle
     if (navToggle) {
         navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            const isOpen = navMenu.classList.toggle('active');
+
+            // Bloqueia scroll quando o menu está aberto no mobile/tablet
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+
+            // Acessibilidade
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
     }
     
@@ -354,6 +360,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Fechar menu mobile se estiver aberto
             if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                navToggle.setAttribute('aria-expanded', 'false');
             }
             
             const targetId = this.getAttribute('href');
@@ -403,7 +411,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== Filtro de Projetos =====
     // ===== Filtro de Projetos + "Ver mais" =====
     if (filterBtns.length > 0 && projectCards.length > 0) {
         const grid = document.querySelector("#projetos .container");
@@ -628,7 +635,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== Formulário de Contato =====
     // ===== Formulário de Contato =====
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
