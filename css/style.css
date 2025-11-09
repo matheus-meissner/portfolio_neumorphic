@@ -233,15 +233,34 @@ textarea { min-height: 150px; resize: vertical; }
 .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
 .nav-toggle {
-  display: none; background: none; border: none; cursor: pointer; width: 40px; height: 40px; position: relative;
-  border-radius: var(--border-radius-md); box-shadow: var(--shadow-small);
+  display: none; 
+  background: none; 
+  border: none; 
+  cursor: pointer; 
+  width: 40px; 
+  height: 40px; 
+  position: relative;
+  border-radius: var(--border-radius-md); 
+  box-shadow: var(--shadow-small);
 }
 .hamburger {
-  width: 20px; height: 2px; background-color: var(--text-primary); position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%); transition: background-color var(--transition-fast);
+  width: 20px; 
+  height: 2px; 
+  background-color: var(--text-primary); 
+  position: absolute; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  transition: background-color var(--transition-fast);
 }
+
 .hamburger::before, .hamburger::after {
-  content: ''; position: absolute; width: 20px; height: 2px; background-color: var(--text-primary);
+  content: ''; 
+  position: absolute; 
+  width: 20px; 
+  height: 2px;
+  left: 0; 
+  background-color: var(--text-primary);
   transition: transform var(--transition-normal);
 }
 .hamburger::before { transform: translateY(-6px); }
@@ -594,18 +613,6 @@ textarea { min-height: 150px; resize: vertical; }
 
 @media (max-width: 768px) {
   .nav { gap: var(--spacing-sm); }
-  /* Drawer mobile único (translateX) */
-  /* .nav-menu{
-    position: fixed; top: 70px; right: 0; bottom: 0; left: 0;
-    background: var(--bg-color);
-    display: flex; flex-direction: column; align-items: center;
-    overflow-y: auto; margin: 0; padding: var(--spacing-lg) 0 0;
-    transform: translateX(-100%); transition: transform var(--transition-normal);
-    box-shadow: none; z-index: 1200; min-width: 0;
-  }
-  .nav-menu.active{ transform: translateX(0); box-shadow: var(--shadow-medium); }
-  .nav-menu li{ width: 100%; text-align: center; padding: var(--spacing-md) 0; }
-  .nav-toggle { display: block; } */
 
   .stats-container { flex-direction: column; gap: var(--spacing-md); }
   .footer-content { flex-direction: column; text-align: center; }
