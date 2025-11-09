@@ -381,9 +381,6 @@ body.no-scroll {
 .stat-number { display: block; font-size: 2rem; font-weight: 700; color: var(--accent-color); }
 .stat-label { font-size: 0.9rem; color: var(--text-secondary); }
 
-.container-cv-buttons { display: flex; justify-content: center; align-items: center; gap: var(--spacing-sm); }
-.cv-button, .cv-button-english { display: flex; justify-content: center; align-items: center; }
-
 /* Efeito de rolagem para os cards de texto */
 .scroll-card {
   background-color: var(--element-color); border-radius: var(--border-radius-md); box-shadow: var(--shadow-medium);

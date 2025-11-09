@@ -130,10 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
         '#contato label[for="message"]': 'Mensagem',
         '#contactForm button[type="submit"]': 'Enviar Mensagem',
 
-        // botões de CV
-        '.cv-button .btn.btn-primary': 'Download CV (PT)',
-        '.cv-button-english .btn.btn-primary': 'Download CV (EN)',
-
         // ===== Educação (timeline) =====
         // --- PT ---
         '#educacao .timeline-item:nth-child(1) .timeline-date': '2025 - Presente',
@@ -251,10 +247,6 @@ document.addEventListener('DOMContentLoaded', function() {
         '#contato label[for="subject"]': 'Subject',
         '#contato label[for="message"]': 'Message',
         '#contactForm button[type="submit"]': 'Send Message',
-
-        // CV buttons
-        '.cv-button .btn.btn-primary': 'Download CV (PT)',
-        '.cv-button-english .btn.btn-primary': 'Download CV (EN)',
 
         // ===== Educação (timeline) =====
         // --- EN ---
