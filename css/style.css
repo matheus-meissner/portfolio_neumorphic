@@ -221,6 +221,12 @@ textarea { min-height: 150px; resize: vertical; }
   }
 }
 
+/* Quando o menu mobile estiver aberto, bloqueia o scroll da página */
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden;
+}
+
 
 
 .nav-link {

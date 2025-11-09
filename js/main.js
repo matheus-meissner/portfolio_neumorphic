@@ -340,17 +340,19 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(animateScrollCards, 300);
     
     // Menu mobile toggle
-    if (navToggle) {
+    if (navToggle && navMenu) {
         navToggle.addEventListener('click', () => {
             const isOpen = navMenu.classList.toggle('active');
 
-            // Bloqueia scroll quando o menu está aberto no mobile/tablet
-            document.body.style.overflow = isOpen ? 'hidden' : '';
+            // Bloqueia/desbloqueia o scroll da página quando o menu está aberto
+            document.body.classList.toggle('no-scroll', isOpen);
+            document.documentElement.classList.toggle('no-scroll', isOpen);
 
             // Acessibilidade
             navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
     }
+
     
     // Navegação suave ao clicar nos links
     navLinks.forEach(link => {
@@ -360,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Fechar menu mobile se estiver aberto
             if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
-                document.body.style.overflow = '';
+                document.body.classList.remove('no-scroll'); // usa a mesma lógica do toggle
                 navToggle.setAttribute('aria-expanded', 'false');
             }
             
