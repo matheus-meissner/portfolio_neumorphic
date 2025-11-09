@@ -331,7 +331,7 @@ body.no-scroll {
 .tech-icon.automate img { width: 60%; height: 60%; }
 .tech-icon.copilot_studio img { width: 50%; height: 50%; }
 .tech-icon.bi img { width: 60%; height: 60%; }
-.tech-icon.csharp img { width: 75%; height: 75%; }
+.tech-icon.csharp img { width: 50%; height: 50%; }
 .tech-icon.powerapps { top: 10%; left: 8%; animation-delay: 0s; }
 .tech-icon.automate { top: 15%; right: 5%; animation-delay: 0.5s; }
 .tech-icon.copilot_studio { bottom: 20%; left: 10%; animation-delay: 1s; }
