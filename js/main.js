@@ -19,6 +19,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== Toggle de linguagem (PT <-> EN) =====
     const langToggle = document.getElementById('langToggle');
 
+    const heroCvButton = document.getElementById('heroCvButton'); // botão único do Hero
+
+    // Configuração dos arquivos de CV por idioma
+    const CV_FILES = {
+        pt: {
+            href: 'https://drive.google.com/uc?export=download&id=1KZWEKoAZ_kYnZuBO-fR5Ug-2e_vM3Os1',
+            filename: 'Matheus-Meissner-CV-PTBR.pdf',
+            label: 'Download CV PT-BR'
+        },
+        en: {
+            href: 'https://drive.google.com/uc?export=download&id=1wUZAb34SMiDb7CENz948KJoQjv4ujHpB',
+            filename: 'Matheus-Meissner-CV-EN.pdf',
+            label: 'Download CV EN'
+        }
+    };
+
+
+
     // Mapeamento de textos por seletor (sem precisar trocar HTML)
     const i18n = {
     pt: {
@@ -91,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '#contato .section-header h2': 'Entre em Contato',
         '#contato .section-header p': 'Vamos conversar sobre seu próximo projeto',
 
-        '.hero-cta a.btn.btn-primary': 'Entre em contato',
+        // '.hero-cta a.btn.btn-primary': 'Entre em contato',
 
         '#sobre .scroll-card h3': 'Quem sou eu?',
         '#sobre .scroll-card p': 'Sou Software Developer & Functional Consultant na Best.Projects, atuando no ecossistema Microsoft com Power Apps, Power Automate, Dynamics 365, Azure Functions, APIs REST, plugins em C#, JavaScript e CanvasApp, além de documentações técnicas e funcionais. Utilizo Copilot e modelos GPT para acelerar análises e desenvolvimento, explorando o potencial da IA em soluções corporativas com foco em integração ao Dataverse, escalabilidade, inovação e impacto real.',
@@ -213,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '#contato .section-header h2': 'Get in Touch',
         '#contato .section-header p': "Let's talk about your next project",
 
-        '.hero-cta a.btn.btn-primary': 'Get in touch',
+        // '.hero-cta a.btn.btn-primary': 'Get in touch',
 
         '#sobre .scroll-card h3': 'Who am I?',
         '#sobre .scroll-card p': 'I am a Software Developer & Functional Consultant at Best.Projects, working in the Microsoft ecosystem with Power Apps, Power Automate, Dynamics 365, Azure Functions, REST APIs, plugins in C#, JavaScript, and CanvasApp, as well as technical and functional documentation. I use Copilot and GPT models to speed up analysis and development, exploring the potential of AI in corporate solutions focused on Dataverse integration, scalability, innovation, and real impact.',
@@ -272,6 +290,16 @@ document.addEventListener('DOMContentLoaded', function() {
     Object.keys(dict).forEach(sel => {
         const el = document.querySelector(sel);
         if (el) el.textContent = dict[sel];
+        // Atualiza o botão dinâmico de CV do Hero
+        if (heroCvButton) {
+            const key = lang === 'pt' ? 'pt' : 'en';
+            const config = CV_FILES[key];
+
+            heroCvButton.href = config.href;
+            heroCvButton.setAttribute('download', config.filename);
+            heroCvButton.textContent = key == 'pt' ? 'Baixar Currículo' : 'Download CV';
+        }
+
     });
 
     // html lang + toggle UI
