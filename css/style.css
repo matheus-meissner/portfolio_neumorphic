@@ -445,6 +445,26 @@ body.no-scroll {
 .filter-btn:hover { box-shadow: var(--shadow-inset-small); }
 .filter-btn.active { background-color: var(--accent-color); color: #fff; box-shadow: var(--shadow-inset-small); }
 
+
+/* Mobile: filtros em coluna, 1 por linha */
+@media (max-width: 700px) {
+  #projetos .projects-filter {
+    display: flex;
+    flex-direction: column;      /* empilha verticalmente */
+    align-items: center;         /* centraliza o grupo */
+    gap: var(--spacing-xs);      /* espaço consistente entre botões */
+    margin-bottom: var(--spacing-md);
+  }
+
+  #projetos .filter-btn {
+    width: 100%;                 /* ocupa toda a largura disponível da coluna */
+    max-width: 320px;            /* opcional: limita pra não ficar gigante em telas um pouco maiores */
+    text-align: center;
+  }
+}
+
+
+
 /* Grid via container (1/2/3 colunas) */
 #projetos .container {
   display: grid;
