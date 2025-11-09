@@ -699,10 +699,20 @@ body.no-scroll {
 }
 
 /* Timeline espaçamento (experiência/educação) */
-#experiencia .timeline-item:last-child, #educacao .timeline-item:last-child { padding-bottom: 0; }
-.experiencia { padding-bottom: var(--spacing-lg); }
-.educacao   { padding-top:    var(--spacing-lg); }
-#experiencia .timeline, #educacao .timeline { padding-bottom: var(--spacing-sm); }
+#experiencia .timeline-item:last-child, 
+#educacao .timeline-item:last-child { 
+  padding-bottom: 0; 
+}
+.experiencia { 
+  padding-bottom: var(--spacing-lg); 
+}
+.educacao   { 
+  padding-top:    var(--spacing-lg); 
+}
+#experiencia .timeline, 
+#educacao .timeline { 
+  padding-bottom: var(--spacing-sm); 
+}
 
 @media (min-width: 1200px) {
   .diferentao1{ height: 51.2px; }

@@ -186,7 +186,7 @@
   }
 
   .experiencia .timeline-card{
-    padding: 12px;              /* cartão mais compacto */
+    padding: 12px;         
     border-radius: 14px;
     width: 100%;
     max-width: 100%;
@@ -247,6 +247,7 @@
   }
 }
 
+
 /* EXPERIÊNCIA — neutraliza overrides globais da data */
 .experiencia .timeline-card{ position: relative; }
 
@@ -292,9 +293,72 @@
   margin: 0 0 var(--spacing-xs) 0;
 }
 
-/* 3) Força linha e dot a seguirem as variáveis desta seção */
-.educacao .timeline::before,
-.educacao .timeline-dot { left: var(--tl-left); }
+/* 3) Aplica o MESMO sistema de gutter da Experiência na Educação */
+
+/* Mobile (default) — mesmos valores iniciais da Experiência */
+.educacao {
+  --tl-left: 26px;          /* posição da linha + dot */
+  --tl-gap: 14px;           /* espaço entre linha e card */
+  --tl-dot-size: 22px;
+}
+
+
+/* Linha vertical e bolinhas alinhadas pelo gutter */
+.educacao .timeline::before {
+  left: var(--tl-left);
+}
+
+.educacao .timeline-dot {
+  left: var(--tl-left);
+  width: var(--tl-dot-size);
+  height: var(--tl-dot-size);
+}
+
+/* Aplica o MESMO recuo lateral da Experiência nos itens da Educação */
+.educacao .timeline-item {
+  padding: 0 0 var(--spacing-lg) calc(var(--tl-left) + var(--tl-gap));
+  /* topo: 0, direita: 0, bottom: spacing-lg, esquerda: linha + gap */
+}
+
+
+/* Mantém os cards alinhados ao gutter, sem empurrões extras */
+.educacao .timeline-content {
+  margin-left: 0;
+}
+
+/* Mesma progressão de avanço para EDUCAÇÃO */
+
+@media (min-width: 600px){
+  .educacao{
+    --tl-left: 32px;
+    --tl-gap: 16px;
+    --tl-dot-size: 24px;
+  }
+}
+
+@media (min-width: 768px){
+  .educacao{
+    --tl-left: 44px;
+    --tl-gap: 20px;
+    --tl-dot-size: 26px;
+  }
+}
+
+@media (min-width: 1024px){
+  .educacao{
+    --tl-left: 60px;
+    --tl-gap: 24px;
+    --tl-dot-size: 28px;
+  }
+}
+
+@media (min-width: 1280px){
+  .educacao{
+    --tl-left: 72px;
+    --tl-gap: 28px;
+    --tl-dot-size: 30px;
+  }
+}
 
 /* 4) Logos dentro do dot: cabem bonitinhos sem cortar */
 .educacao .timeline-dot img{
