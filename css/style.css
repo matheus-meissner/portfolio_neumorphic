@@ -699,5 +699,47 @@ img, video, svg { max-width: 100%; height: auto; display: block; }
   .image-frame{ width: clamp(200px, 86vw, 280px); height: clamp(200px, 86vw, 280px); }
 }
 
+/* ===== Botão Voltar ao Topo ===== */
+.back-to-top {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--accent-color);          /* mantém identidade visual */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-medium);
+  cursor: pointer;
+  
+  /* estado inicial: escondido */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity var(--transition-fast),
+              transform var(--transition-fast),
+              visibility var(--transition-fast);
+  z-index: 1500; /* acima do header e dos cards */
+}
 
+/* Ícone dentro do botão */
+.back-to-top i {
+  font-size: 1rem;
+}
 
+/* Mostrado quando JS adiciona .visible */
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Hover: feedback sutil */
+.back-to-top:hover {
+  box-shadow: var(--shadow-large);
+  transform: translateY(-2px);
+}
