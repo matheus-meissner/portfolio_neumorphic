@@ -197,7 +197,7 @@ textarea { min-height: 150px; resize: vertical; }
     align-items: center;
     overflow-y: auto;
     margin: 0;
-    padding: var(--spacing-lg) 0 0;
+    padding: var(--spacing-md) 0 var(--spacing-xl);
     transform: translateX(-100%);
     transition: transform var(--transition-normal);
     box-shadow: none;
