@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configuração dos arquivos de CV por idioma
     const CV_FILES = {
         pt: {
-            href: 'https://drive.google.com/uc?export=download&id=1KZWEKoAZ_kYnZuBO-fR5Ug-2e_vM3Os1',
-            filename: 'Matheus-Meissner-CV-PTBR.pdf',
+            href: 'https://drive.google.com/uc?export=download&id=1WtJw-LbcDPHX7OzxmIg1PQcEtb4MJpAw',
+            filename: 'Matheus_Meissner_CV.pdf',
             label: 'Download CV PT-BR'
         },
         en: {
-            href: 'https://drive.google.com/uc?export=download&id=1wUZAb34SMiDb7CENz948KJoQjv4ujHpB',
-            filename: 'Matheus-Meissner-CV-EN.pdf',
+            href: 'https://drive.google.com/uc?export=download&id=1YZbze_A1fmkbWx0v6OIz3QzaWshQx8OY',
+            filename: 'Matheus_Meissner_Resume.pdf',
             label: 'Download CV EN'
         }
     };
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'a.nav-link[href="#contato"]': 'Contato',
 
         '#home .hero-text h1': 'Olá, eu sou Matheus Meissner',
-        '#home .hero-text h2': 'Dynamics Developer & Functional Consultant',
+        '#home .hero-text h2': 'AI Engineer & Software Developer',
         '.flip-message': 'Role pra baixo e me conheça melhor',
 
         '#sobre .section-header h2': 'Sobre Mim',
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // '.hero-cta a.btn.btn-primary': 'Entre em contato',
 
         '#sobre .scroll-card h3': 'Quem sou eu?',
-        '#sobre .scroll-card p': 'Sou Software Developer & Functional Consultant na Best.Projects, atuando no ecossistema Microsoft com Power Apps, Power Automate, Dynamics 365, Azure Functions, APIs REST, plugins em C#, JavaScript e CanvasApp, além de documentações técnicas e funcionais. Utilizo Copilot e modelos GPT para acelerar análises e desenvolvimento, explorando o potencial da IA em soluções corporativas com foco em integração ao Dataverse, escalabilidade, inovação e impacto real.',
+        '#sobre .scroll-card p': 'Sou um Engenheiro de IA e Desenvolvedor de Software apaixonado por criar soluções inteligentes e escaláveis. Minha especialidade é arquitetar aplicações impulsionadas por Inteligência Artificial e orquestrar fluxos avançados usando Python, APIs personalizadas e modelos generativos. Indo além dos sistemas tradicionais, meu foco é integrar IA de ponta — de agentes inteligentes customizados a engenharia de prompt — em infraestruturas corporativas robustas como Azure e Dataverse. Unindo o desenvolvimento de ponta a ponta com inteligência artificial, meu objetivo é transformar desafios técnicos complexos em produtos digitais de alta performance que entregam impacto real e mensurável.',
       
         '#sobre .stats-container .stat-card:nth-child(1) .stat-label': 'Anos de experiência',
         '#sobre .stats-container .stat-card:nth-child(2) .stat-label': 'Projetos Concluídos',
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'a.nav-link[href="#contato"]': 'Contact',
 
         '#home .hero-text h1': "Hi, I'm Matheus Meissner",
-        '#home .hero-text h2': 'Dynamics Developer & Functional Consultant',
+        '#home .hero-text h2': 'AI Engineer & Software Developer',
         '.flip-message': 'Scroll down and get to know me',
 
         '#sobre .section-header h2': 'About Me',
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // '.hero-cta a.btn.btn-primary': 'Get in touch',
 
         '#sobre .scroll-card h3': 'Who am I?',
-        '#sobre .scroll-card p': 'I am a Software Developer & Functional Consultant at Best.Projects, working in the Microsoft ecosystem with Power Apps, Power Automate, Dynamics 365, Azure Functions, REST APIs, plugins in C#, JavaScript, and CanvasApp, as well as technical and functional documentation. I use Copilot and GPT models to speed up analysis and development, exploring the potential of AI in corporate solutions focused on Dataverse integration, scalability, innovation, and real impact.',
+        '#sobre .scroll-card p': 'I am an AI Engineer and Software Developer passionate about building intelligent, scalable solutions. My expertise lies in architecting AI-driven applications and orchestrating advanced workflows using Python, custom APIs, and generative models. Moving beyond traditional systems, I focus on seamlessly integrating cutting-edge AI—from custom intelligent agents to prompt engineering—into robust enterprise infrastructures like Azure and Dataverse. By blending full-cycle development with advanced AI capabilities, my goal is to transform complex technical challenges into high-performance digital products that deliver real, measurable impact.',
 
         '#sobre .stats-container .stat-card:nth-child(1) .stat-label': 'Years of Experience',
         '#sobre .stats-container .stat-card:nth-child(2) .stat-label': 'Projects Completed',
