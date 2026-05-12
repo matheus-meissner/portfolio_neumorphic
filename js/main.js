@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configuração dos arquivos de CV por idioma
     const CV_FILES = {
         pt: {
-            href: 'https://drive.google.com/uc?export=download&id=1WtJw-LbcDPHX7OzxmIg1PQcEtb4MJpAw',
+            href: 'https://drive.google.com/uc?export=download&id=1L0obts5mXkvk0ODmtXMQYemOJ4_l9xes',
             filename: 'Matheus_Meissner_CV.pdf',
             label: 'Download CV PT-BR'
         },
